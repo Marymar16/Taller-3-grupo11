@@ -36,7 +36,7 @@ public static void ordenarProducto ()){
         int n = 0;
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader("productos"));
+            BufferedReader br = new BufferedReader(new FileReader("Productos.txt"));
             String linea;
 
             br.readLine(); // saltar encabezado
