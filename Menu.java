@@ -20,7 +20,7 @@ public class Menu {
             case 1:
                 break;
             case 2:
-
+                agregarCliente();
                 break;
             case 3:
 
@@ -36,4 +36,31 @@ public class Menu {
         }
     }while(opcion != 5);
 }
+public static void agregarCliente(){
+
+        try{
+
+            System.out.println("ID cliente:");
+            int id = sc.nextInt();
+            sc.nextLine();
+
+            System.out.println("Nombre:");
+            String nombre = sc.nextLine();
+
+            System.out.println("Email:");
+            String email = sc.nextLine();
+
+            Clientes c = new Clientes(id,nombre,email);
+
+            FileWriter fw = new FileWriter("clientes.txt", true);
+            fw.write(c.toString() + "\n");
+            fw.close();
+
+            System.out.println("Cliente agregado");
+
+        }catch(Exception e){
+            System.out.println("Error agregando cliente");
+        }
+
+    }
 }
