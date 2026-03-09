@@ -26,7 +26,7 @@ public class Menu {
 
                 break;
             case 4:
-
+                clientesConCompras();
                 break;
             case 5:
                 System.out.println("Saliendo del programa...");
@@ -36,4 +36,62 @@ public class Menu {
         }
     }while(opcion != 5);
 }
+public static void clientesConCompras(){
+
+        try{
+
+            BufferedReader brClientes = new BufferedReader(new FileReader("clientes.txt"));
+            BufferedReader brPedidos = new BufferedReader(new FileReader("pedidos.txt"));
+
+            ArrayList<Clientes> clientes = new ArrayList<>();
+            ArrayList<Pedidos> pedidos = new ArrayList<>();
+
+            String linea;
+
+            while((linea = brClientes.readLine()) != null){
+
+                String d[] = linea.split(",");
+
+                clientes.add(new Clientes(
+                        Integer.parseInt(d[0]),
+                        d[1],
+                        d[2]
+                ));
+            }
+
+            while((linea = brPedidos.readLine()) != null){
+
+                String d[] = linea.split(",");
+
+                pedidos.add(new Pedidos(
+                        Integer.parseInt(d[2]),
+                        Integer.parseInt(d[1]),
+                        Integer.parseInt(d[0]),
+                        Integer.parseInt(d[3]),
+                        d[4]
+                ));
+            }
+
+            System.out.println("CLIENTES QUE HAN COMPRADO:");
+
+            for(Clientes c : clientes){
+
+                for(Pedidos p : pedidos){
+
+                    if(c.getId() == p.getIdclte()){
+
+                        System.out.println(c.getNombre());
+                        break;
+
+                    }
+
+                }
+
+            }
+
+        }catch(Exception e){
+            System.out.println("Error leyendo clientes");
+        }
+
+    }
 }
