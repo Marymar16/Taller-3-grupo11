@@ -1,0 +1,4 @@
+1,Arroz,Comida,3000,20
+2,Leche,Bebida,2500,10
+3,Pan,Comida,1500,15
+4,Jugo,Bebida,2000,8
